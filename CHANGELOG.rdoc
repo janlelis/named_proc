@@ -1,6 +1,7 @@
 == 1.1.0 (master)
 * Updates for 2015 Rubies, drop support for Ruby 1
 * Fix method to lambdafy a proc
+* Add proc name to NamedProc#inspect
 
 == 1.0.0
 * Initial Release
