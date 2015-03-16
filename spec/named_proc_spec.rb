@@ -1,34 +1,33 @@
-# encoding: utf-8
 require_relative '../lib/named_proc'
 
 describe "proc" do
   it "creates a new proc as usual when called with a block" do
     a = proc{}
-    a.should be_instance_of Proc
-    a.lambda?.should == false
+    expect( a ).to be_instance_of Proc
+    expect( a ).not_to be_lambda
   end
   
   it "creates a named proc when a method gets called on it" do
     a = proc.brawl{}
-    a.should be_a Proc
-    a.should be_instance_of NamedProc
-    a.lambda?.should == false
-    a.name == :brawl
+    expect( a ).to be_a Proc
+    expect( a ).to be_instance_of NamedProc
+    expect( a ).not_to be_lambda
+    expect( a.name ).to eq :brawl
   end
 end
 
 describe "lambda" do
   it "creates a new lambda as usual when called with a block" do
     a = lambda{}
-    a.should be_instance_of Proc
-    a.lambda?.should == true
+    expect( a ).to be_instance_of Proc
+    expect( a ).to be_lambda
   end
   
   it "creates a named lambda when a method gets called on it" do
     a = lambda.brawl{}
-    a.should be_a Proc
-    a.should be_instance_of NamedProc
-    a.lambda?.should == true
-    a.name == :brawl
+    expect( a ).to be_a Proc
+    expect( a ).to be_instance_of NamedProc
+    expect( a ).to be_lambda
+    expect( a.name ).to eq :brawl
   end
 end

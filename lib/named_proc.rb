@@ -1,4 +1,4 @@
-# encoding: utf-8
+require_relative 'named_proc/version'
 
 # Class for a proc that's got a name
 class NamedProc < Proc
@@ -6,16 +6,13 @@ class NamedProc < Proc
 
   def initialize(name)
     @name = name
-    super
+    super()
   end
   
-  # create one from a given proc/lambda object
-  def self.create(name, block, lambda = false)
-    name = name.to_sym
-    # sorry for this ugly hack, is there a better way to lambdafy?
-    block = Module.new.send(:define_method, name.to_sym, &block) if lambda
-    
-    new(name, &block)
+  # Create a named proc from a given proc/lambda object
+  def self.create(name, block, create_lambda = false)
+    block = Module.new.send(:define_method, name.to_sym, &block) if create_lambda
+    new(name.to_sym, &block)
   end
   
   # Proxy object to ease named proc initialization
@@ -31,7 +28,7 @@ class NamedProc < Proc
   module Object
     private
   
-    # create a proc with name if given
+    # Create a proc with name if given
     def proc
       if block_given?
         super
@@ -40,7 +37,7 @@ class NamedProc < Proc
       end
     end
     
-    # same for lambda
+    # Same for lambda
     def lambda
       if block_given?
         super
