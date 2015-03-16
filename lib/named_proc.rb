@@ -11,7 +11,11 @@ class NamedProc < Proc
   
   # Create a named proc from a given proc/lambda object
   def self.create(name, block, create_lambda = false)
-    block = Module.new.send(:define_method, name.to_sym, &block) if create_lambda
+    if create_lambda
+      lambdafyer = Module.new
+      lambdafyer.singleton_class.send(:define_method, :lambdafy, &block)
+      block = lambdafyer.method(:lambdafy).to_proc
+    end
     new(name.to_sym, &block)
   end
   
