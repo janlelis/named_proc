@@ -1,13 +1,18 @@
-= Named Proc
+= Named Proc {<img src="https://travis-ci.org/janlelis/named_proc.png" />}[https://travis-ci.org/janlelis/named_proc]
+
+When working with a lot of procs, naming them might become handy. It makes identifying them later easier, which can be utilized by your code. For example, it enables improves the usefulness of {multi_block}[https:/github.com/janlelis/multi_block], a gem that allows you to pass multiple procs to methods.
+
 
 == Setup
 
-    gem install multi_block
+Add to Gemfile:
+
+    gem 'named_proc'
 
 
 == Named Procs
 
-A named proc acts like a normal proc, but has got a name attribute. You can create it by calling a method with the desired name on +proc+:
+A named proc acts like a normal proc, but it has a name attribute. You create it by calling a method with the desired name on +proc+:
 
     >> a = proc.even?{ |e| e.even? }
     => #<NamedProc:0x00000001ffc340@(irb):1>
