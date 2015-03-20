@@ -1,6 +1,6 @@
 = Named Proc {<img src="https://badge.fury.io/rb/named_proc.svg" />}[http://badge.fury.io/rb/named_proc] {<img src="https://travis-ci.org/janlelis/named_proc.png" />}[https://travis-ci.org/janlelis/named_proc]
 
-When working with a lot of procs, naming them might become handy. It makes identifying them later easier, which can be utilized by your code. For example, it enables improves the usefulness of {multi_block}[https:/github.com/janlelis/multi_block], a gem that allows you to pass multiple procs to methods.
+When working with a lot of procs, naming them might become handy. It makes identifying them later easier. For an example that uses named procs, see the {multi_block}[https://github.com/janlelis/multi_block] gem!
 
 
 == Setup
