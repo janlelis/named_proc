@@ -1,8 +1,9 @@
 # Change Log
 
-## Next (unreleased)
+## 1.2
 
 * Update project setup to 2021
+* Re-release
 
 ## 1.1
 
